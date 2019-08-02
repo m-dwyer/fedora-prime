@@ -1,0 +1,6 @@
+[Seat:*]
+# Force using traditional X
+type=xlocal
+# Scripts to handle PRIME
+display-setup-script=/usr/sbin/prime-offload.sh
+display-stopped-script=/usr/sbin/prime-switch.sh
