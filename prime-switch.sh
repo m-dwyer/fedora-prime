@@ -11,9 +11,9 @@ case $NVIDIA_MODE in
 	on )
 		echo "Enabling nvidia"
 		cp "${NVIDIA_CONF}" "${NVIDIA_XORG}"
-		/usr/sbin/modprobe nvidia-drm
 		# disable power management
-		echo "on" | tee "/sys/bus/pci/devices/0000:00:01.0/power/control"
+		echo "on" | tee "/sys/bus/pci/devices/0000:01:00.0/power/control"
+		/usr/sbin/modprobe nvidia-drm
 	;;
 
 	off )
@@ -25,7 +25,7 @@ case $NVIDIA_MODE in
 		/usr/sbin/rmmod nvidia-modeset
 		/usr/sbin/rmmod nvidia
 		# enable power management
-		echo "auto" | tee "/sys/bus/pci/devices/0000:00:01.0/power/control"
+		echo "auto" | tee "/sys/bus/pci/devices/0000:01:00.0/power/control"
 	;;
 esac
 
