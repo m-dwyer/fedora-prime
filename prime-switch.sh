@@ -12,7 +12,7 @@ case $NVIDIA_MODE in
 		echo "Enabling nvidia"
 		cp "${NVIDIA_CONF}" "${NVIDIA_XORG}"
 		# disable power management
-		#echo "auto" > "/sys/bus/pci/devices/BUS_ID/power/control"
+		echo "on" | tee "/sys/bus/pci/devices/0000:00:01.0/power/control"
 	;;
 
 	off )
@@ -24,7 +24,7 @@ case $NVIDIA_MODE in
 		/usr/sbin/rmmod nvidia-modeset
 		/usr/sbin/rmmod nvidia
 		# enable power management
-		#echo "on" > "/sys/bus/pci/devices/BUS_ID/power/control"
+		echo "auto" | tee "/sys/bus/pci/devices/0000:00:01.0/power/control"
 	;;
 esac
 
